@@ -13,7 +13,7 @@ _                      _
  |_| |_|\___|\__| \_/\_/ \___/|_|  |_|\_\   |___/\___\__,_|_| |_|_| |_|\___|_|  [by jackxripper]
 """
 
-# Function to display ASCII art and loading animation
+
 def display_loading():
     sys.stdout.write(ascii_art)
     sys.stdout.flush()
@@ -25,13 +25,13 @@ def display_loading():
     sys.stdout.flush()
 
 def scan_network(target):
-    # Create a PortScanner object
+    
     nm = nmap.PortScanner()
     
-    # Scan the target with OS detection and service version detection
+    
     nm.scan(target, '1-1024', arguments='-O -sV')
     
-    # Prepare the table data
+    
     table_data = []
 
     for host in nm.all_hosts():
@@ -39,7 +39,7 @@ def scan_network(target):
         hostname = nm[host].hostname()
         os = 'Unknown'
         
-        # Check for OS detection results
+        
         if 'osmatch' in nm[host]:
             os_matches = nm[host]['osmatch']
             if os_matches:
@@ -57,11 +57,11 @@ def scan_network(target):
         
         table_data.append([ip_address, ','.join(map(str, open_ports)), os, ','.join(services)])
     
-    # Print the table
+    
     table_str = tabulate(table_data, headers=["IP Address", "Open Ports", "Operating System", "Services"], tablefmt="grid")
     print(table_str)
 
-    # Save the results to a file
+    
     with open("scans.txt", "w") as file:
         file.write(table_str)
 
