@@ -1,111 +1,55 @@
-# Network Scanner
+# Network Scanner Script
 
-A Python-based network scanning tool that uses `nmap` to detect open ports, services, and operating systems on a specified target (IP address or domain). The results are neatly formatted into a table and saved for later analysis.
+This Python script allows you to scan a target IP address or domain to identify open ports and services. The results are presented in a colored, formatted table and saved to a `scans.txt` file. The script also displays a loading animation and provides an estimated time for the scan to complete.
 
 ## Features
+- Scans a target IP address or domain for open ports and services.
+- Displays results in a color-formatted table.
+- Saves the scan results to `scans.txt`.
+- Includes loading animation and progress updates with estimated time remaining.
 
-- Scans ports from 1 to 1024 by default.
-- Detects operating system of the target (if identifiable).
-- Lists open ports along with the corresponding services running on those ports.
-- Displays results in a human-readable tabular format using the `tabulate` module.
-- Saves scan results in a text file (`scans.txt`).
-  
-## Prerequisites
+## Requirements
 
-Before running the script, ensure that you have the following dependencies installed:
+Before running the script, ensure you have the following installed:
 
-- **`python-nmap`**: Python wrapper for the `nmap` tool to interact with the network scanner.
-- **`tabulate`**: For displaying results in a clean, readable table format.
+### Software Requirements:
+- **Python 3.x** (Recommended version: 3.7+)
+- **Nmap**: A network scanning tool for port scanning.
 
-You can install all dependencies easily using the provided `requirements.txt`.
+### Python Libraries:
+- **`python-nmap`**: Python library for interacting with the `nmap` tool.
+- **`tabulate`**: Used for creating pretty tables.
+- **`colorama`**: Adds color to terminal output.
 
-## Installation
+## Installation:
+# Step 1: Create a virtual environment
+python3 -m venv venv
+# Step 2: Activate the virtual environment
+# On Linux/macOS:
+source venv/bin/activate
 
-### 1. Clone or Download the Repository
+# On Windows:
+.\venv\Scripts\activate
 
-Clone the repository to your local machine:
-
-```bash
-git clone https://github.com/jackxripper/network_scanner.git
-cd network_scanner
-2. Install Dependencies
-Create a virtual environment (recommended) and install the required libraries from the requirements.txt file:
-
+# Step 3: Install dependencies
 pip install -r requirements.txt
-Alternatively, you can manually install the dependencies:
 
-pip install python-nmap tabulate
-3. Install nmap
-Ensure that nmap is installed on your machine. It is required to perform the actual network scan.
+# Step 4: Create the requirements.txt file with the following content
+echo "python-nmap" > requirements.txt
+echo "tabulate" >> requirements.txt
+echo "colorama" >> requirements.txt
 
-For Linux:
-
+# Step 5: Install Nmap
+# On Linux (Ubuntu/Debian):
 sudo apt-get install nmap
-For macOS:
 
+# On macOS (using Homebrew):
 brew install nmap
-For Windows, download and install nmap from nmap.org.
 
-Usage
-Run the Script
+# On Windows: Download the installer from nmap.org
 
-Once the dependencies are installed and nmap is set up, you can run the script:
+# Step 6: Run the script
+python network_scanner.py
 
-python network_scan.py
-Enter the Target Information
-
-When prompted, provide the IP address or domain name of the target you wish to scan.
-
-Enter the IP address or domain to scan: <target-ip-or-domain>
-View the Scan Results
-
-The script will display the scan results in a table format with the following columns:
-
-IP Address: The target's IP address.
-
-Open Ports: The open ports on the target.
-
-Operating System: The operating system detected (if identifiable).
-
-Services: The services running on the open ports.
-
-Example output:
-
-sql
-+-------------+-------------+------------------+------------------------------+
-| IP Address | Open Ports  | Operating System | Services                     |
-+-------------+-------------+------------------+------------------------------+
-| 192.168.1.1| 22, 80, 443 | Linux            | 22/ssh, 80/http, 443/https    |
-+-------------+-------------+------------------+------------------------------+
-Saving Results
-
-The results are saved in a file called scans.txt in the current working directory. You can view this file for detailed information or for future reference.
-
-#Example of Running the Script:
-$ python network_scan.py
-Loading...
-Enter the IP address or domain to scan: 192.168.1.1
-
-+-------------+-------------+------------------+------------------------------+
-| IP Address | Open Ports  | Operating System | Services                     |
-+-------------+-------------+------------------+------------------------------+
-| 192.168.1.1| 22, 80, 443 | Linux            | 22/ssh, 80/http, 443/https    |
-+-------------+-------------+------------------+------------------------------+
-
-Results saved to scans.txt
-Output File
-The scan results will be saved in scans.txt within the script's directory. You can open this file for further review.
-
-Troubleshooting
-ModuleNotFoundError: No module named 'nmap'
-Ensure that you have installed the necessary dependencies:
-
-pip install python-nmap tabulate
-nmap Command Not Found
-Make sure nmap is installed on your system. Follow the installation instructions above for your operating system.
-
-Contributing
-Contributions are welcome! If you have suggestions for improvements or new features, please fork the repository, make changes
-
-Contact
-For any questions or issues, please feel free to open an issue on the GitHub repository.
+# Step 7: Enter the target IP address or domain when prompted
+Enter the IP address or domain to scan: <target_ip_or_domain>
